@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #DDD;
+        }
+
+        tr:hover {
+            background-color: #D6EEEE;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Show user by Id</title>
+</head>
+<body>
+<table>
+    <tr><th>Id</th><th th:text="${user.getId()}"></th></tr>
+    <tr><td>Firstname</td><td th:text="${user.getFirstname()}"></td></tr>
+    <tr><td>Lastname</td><td th:text="${user.getLastname()}"></td></tr>
+    <tr><td>Email</td><td th:text="${user.getEmail()}"></td></tr>
+    <tr><td>Age</td><td th:text="${user.getAge()}"></td></tr>
+</table>
+
+<form th:method="GET"
+      th:action="@{/{id}/edit(id=${user.getId()})}">
+    <input type="submit" value="Edit">
+</form>
+<form th:method="DELETE"
+      th:action="@{/{id}(id=${user.getId()})}">
+    <input type="submit" value="Delete">
+</form>
+</body>
+</html>
